@@ -1,0 +1,8 @@
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="article in ctrl.articles">
+        <a href="" ng-click="ctrl.setMainArticle(article)">
+          <span>{{ article.title }}</span>
+          <span>{{ article.publishedAt | date }}</span>
+      </a>
+    </li>
+</ul>
