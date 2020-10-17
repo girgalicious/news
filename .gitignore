@@ -29,9 +29,6 @@
 # RSpec
 spec/examples.txt
 
-# Database credentials
-config/database.yml
-
 # coverage
 coverage/
 
