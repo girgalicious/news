@@ -1,10 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'active_record/railtie'
+# require 'active_record/railtie'
 require 'action_controller/railtie'
-require 'action_mailer/railtie'
-require 'active_model/railtie'
-require 'sprockets/railtie'
+# require 'action_mailer/railtie'
+# require 'active_model/railtie'
+# require 'sprockets/railtie'
 require 'rack/cors'
 require 'rack/rewrite'
 require 'rack-timeout'
@@ -27,7 +27,7 @@ class NewsApplication < Rails::Application
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Eastern Time (US & Canada)'
-    config.active_record.default_timezone = :local
+    # config.active_record.default_timezone = :local
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = 'utf-8'
@@ -36,12 +36,12 @@ class NewsApplication < Rails::Application
     config.filter_parameters += [:password]
 
     # Enable the asset pipeline
-    config.assets.enabled = false
+    # config.assets.enabled = false
 
     # get rid of field_with_error
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag.html_safe }
 
-    config.middleware.use ActiveRecord::Migration::CheckPending
+    # config.middleware.use ActiveRecord::Migration::CheckPending
     config.middleware.use Rack::Deflater
 
     # Cross Domain Request
@@ -49,20 +49,7 @@ class NewsApplication < Rails::Application
         allow do
             origins '*'
             resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
-            resource '/assets/*', headers: :any, methods: [:get]
-            resource '/fonts/*', headers: :any, methods: [:get]
         end
-    end
-
-    config.generators do |g|
-        g.test_framework :rspec,
-                         :fixtures => true,
-                         :view_specs => false,
-                         :helper_specs => false,
-                         :routing_specs => true,
-                         :controller_specs => true,
-                         :request_specs => true
-        g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
 
     config.middleware.insert_before ActionDispatch::Static, Rack::Rewrite do

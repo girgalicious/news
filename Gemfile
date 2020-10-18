@@ -3,8 +3,6 @@ ruby '2.3.8'
 
 # gems required to boot the app
 gem 'actionpack', '5.0.6'
-gem 'active_model_serializers', '0.10.9'
-gem 'activerecord', '5.0.6'
 gem 'news-api'
 gem 'pg', '0.19.0'
 gem 'rack-cors', '0.4.1', :require => 'rack/cors' # will be used to support mobile
